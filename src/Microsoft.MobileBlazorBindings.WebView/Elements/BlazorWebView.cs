@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using Microsoft.JSInterop.Infrastructure;
@@ -157,6 +158,11 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
 
             _ipc = new IPC(_webView);
             _jsRuntime = new BlazorHybridJSRuntime(_ipc);
+
+            // Initialize JSRuntime
+            var services = Services ?? BlazorHybridDefaultServices.Instance ?? DefaultServices.Value;
+            var jsRuntimeProxy = (BlazorHybridJSRuntimeProxy)services.GetRequiredService<IJSRuntime>();
+            jsRuntimeProxy.Initialize(_jsRuntime);
         }
 
         // TODO: This isn't the right way to trigger the init, because it wouldn't happen naturally if consuming
