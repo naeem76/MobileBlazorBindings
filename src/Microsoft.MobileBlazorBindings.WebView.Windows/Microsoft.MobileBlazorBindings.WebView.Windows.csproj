@@ -11,7 +11,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="0.9.538-prerelease" />
+    <None Remove="build/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="build/**/*">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutput>true</CopyToOutput>
+      <BuildAction>Content</BuildAction>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.674-prerelease" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.8.0.1451" NoWarn="NU1701" />
@@ -24,7 +40,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.MobileBlazorBindings.WebView\Microsoft.MobileBlazorBindings.WebView.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="build\**" Pack="True" PackagePath="build\" />
+  </ItemGroup>
   <ItemGroup>
       <FilesToSign Include="$(OutDir)\Microsoft.MobileBlazorBindings.WebView.Windows.dll">
           <Authenticode>Microsoft400</Authenticode>
