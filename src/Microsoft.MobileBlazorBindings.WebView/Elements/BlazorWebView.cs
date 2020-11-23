@@ -57,6 +57,21 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
         {
         }
 
+        public async Task<string> EvalJsAsync(string js)
+        {
+            try
+            {
+                var result = await _webView.EvaluateJavaScriptAsync(js);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                return null;
+                
+            }
+        }
+
         protected override void OnParentSet()
         {
             base.OnParentSet();

@@ -38,5 +38,12 @@ namespace Microsoft.MobileBlazorBindings.Elements
 
             await element.Render(ChildContent).ConfigureAwait(false);
         }
+
+        public async Task EvalJSAsync(string js)
+        {
+            var element = (MobileBlazorBindingsBlazorWebView)NativeControl;
+
+            await element.EvalJsAsync(js);
+        }
     }
 }
