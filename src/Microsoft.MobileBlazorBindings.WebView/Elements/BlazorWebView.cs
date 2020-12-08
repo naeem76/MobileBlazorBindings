@@ -28,7 +28,7 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
 {
     public class BlazorWebView<TComponent> : XF.ContentView, IDisposable where TComponent : IComponent
     {
-        private static readonly FileExtensionContentTypeProvider FileExtensionContentTypeProvider = new FileExtensionContentTypeProvider();
+        private static readonly FileExtensionContentTypeProvider FileExtensionContentTypeProvider = new();
         private static readonly RenderFragment EmptyRenderFragment = builder => { };
 
         private readonly Dispatcher _dispatcher;
@@ -46,8 +46,13 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
 
         public IHost Host { get; set; }
 
+        /// <summary>
+        /// The element selector for the root component. The default value is <c>app</c>, representing a component named <code>&lt;app&gt;...&lt;/app&gt;</code>
+        /// </summary>
+        public string RootComponentElementSelector { get; set; } = "app";
+
         // Use this if no Services was supplied
-        private static readonly Lazy<IServiceProvider> DefaultServices = new Lazy<IServiceProvider>(() =>
+        private static readonly Lazy<IServiceProvider> DefaultServices = new(() =>
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddLogging();
@@ -235,7 +240,7 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
         {
         }
 
-        private string GetResourceFilenameFromUri(Uri uri)
+        private static string GetResourceFilenameFromUri(Uri uri)
         {
             return Uri.UnescapeDataString(uri.AbsolutePath.Substring(1));
         }
@@ -258,7 +263,7 @@ namespace Microsoft.MobileBlazorBindings.WebView.Elements
             var loggerFactory = scopeServiceProvider.GetRequiredService<ILoggerFactory>();
             _navigationManager = (BlazorHybridNavigationManager)scopeServiceProvider.GetRequiredService<NavigationManager>();
             _navigationManager.Initialize(_jsRuntime, handshakeResult.BaseUri, handshakeResult.InitialUri);
-            _blazorHybridRenderer = new BlazorHybridRenderer(_ipc, scopeServiceProvider, loggerFactory, _jsRuntime, _dispatcher, ErrorHandler);
+            _blazorHybridRenderer = new BlazorHybridRenderer(_ipc, scopeServiceProvider, loggerFactory, _jsRuntime, _dispatcher, ErrorHandler, RootComponentElementSelector);
         }
 
         // TODO: This is also not the right way to trigger a render, as you wouldn't be able to call this if consuming

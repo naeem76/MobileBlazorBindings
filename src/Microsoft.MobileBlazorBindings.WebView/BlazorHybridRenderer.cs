@@ -22,13 +22,13 @@ namespace Microsoft.MobileBlazorBindings.WebView
         private static readonly MethodInfo _writeMethod;
         private static readonly Task _canceledTask = Task.FromCanceled(new CancellationToken(canceled: true));
 
-        private readonly int _rendererId = 0; // No need for more than one renderer per webview
+        private const int RendererId = 0; // No need for more than one renderer per webview
         private readonly IPC _ipc;
         private readonly IJSRuntime _jsRuntime;
         private readonly Dispatcher _dispatcher;
         private readonly IBlazorErrorHandler _blazorErrorHandler;
-        private readonly ConcurrentQueue<UnacknowledgedRenderBatch> _unacknowledgedRenderBatches = new ConcurrentQueue<UnacknowledgedRenderBatch>();
-        private bool _disposing = false;
+        private readonly ConcurrentQueue<UnacknowledgedRenderBatch> _unacknowledgedRenderBatches = new();
+        private bool _disposing;
         private long _nextRenderId = 1;
 
 
@@ -40,13 +40,14 @@ namespace Microsoft.MobileBlazorBindings.WebView
             _writeMethod = _writer.GetMethod("Write", new[] { typeof(RenderBatch).MakeByRefType() });
         }
 
-        public BlazorHybridRenderer(IPC ipc, IServiceProvider serviceProvider, ILoggerFactory loggerFactory, JSRuntime jsRuntime, Dispatcher dispatcher, IBlazorErrorHandler blazorErrorHandler)
+        public BlazorHybridRenderer(IPC ipc, IServiceProvider serviceProvider, ILoggerFactory loggerFactory, JSRuntime jsRuntime, Dispatcher dispatcher, IBlazorErrorHandler blazorErrorHandler, string rootComponentElementSelector)
             : base(serviceProvider, loggerFactory)
         {
             _ipc = ipc ?? throw new ArgumentNullException(nameof(ipc));
             _dispatcher = dispatcher ?? throw new ArgumentNullException(nameof(dispatcher));
             _jsRuntime = jsRuntime ?? throw new ArgumentNullException(nameof(jsRuntime));
             _blazorErrorHandler = blazorErrorHandler;
+            rootComponentElementSelector ??= "app";
 
             var rootComponent = new RenderFragmentComponent();
             var rootComponentId = AssignRootComponentId(rootComponent);
@@ -54,9 +55,9 @@ namespace Microsoft.MobileBlazorBindings.WebView
 
             var initTask = _jsRuntime.InvokeAsync<object>(
                 "Blazor._internal.attachRootComponentToElement",
-                "app",
+                rootComponentElementSelector,
                 rootComponentId,
-                _rendererId);
+                RendererId);
             CaptureAsyncExceptions(initTask);
         }
 
@@ -146,7 +147,7 @@ namespace Microsoft.MobileBlazorBindings.WebView
         {
             try
             {
-                await task;
+                await task.ConfigureAwait(false);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

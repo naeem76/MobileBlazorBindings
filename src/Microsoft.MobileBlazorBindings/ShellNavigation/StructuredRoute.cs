@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MobileBlazorBindingsXaminals.ShellNavigation
+namespace Microsoft.MobileBlazorBindings.ShellNavigation
 {
     //Used to map blazor route syntax to forms query syntax
     public class StructuredRoute
@@ -25,12 +25,7 @@ namespace MobileBlazorBindingsXaminals.ShellNavigation
 
         public StructuredRoute(string originalRoute, Type type)
         {
-            if (originalRoute == null)
-            {
-                throw new ArgumentNullException(nameof(originalRoute));
-            }
-
-            OriginalUri = originalRoute;
+            OriginalUri = originalRoute ?? throw new ArgumentNullException(nameof(originalRoute));
             Type = type;
             var allRouteSegments = originalRoute.Split('/');
             var parameterKeys = allRouteSegments.Where(x => x.Contains('{') && x.Contains('}'));
