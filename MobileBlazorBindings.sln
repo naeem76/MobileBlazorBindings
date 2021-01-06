@@ -141,6 +141,47 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileBlazorApp.Android", "D:\Work\Github\nogueira-mineiro\NewBlazorApp\MobileBlazorApp.Android\MobileBlazorApp.Android.csproj", "{705D9315-EA62-4BFD-B98D-9498A8E787E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileBlazorApp.iOS", "D:\Work\Github\nogueira-mineiro\NewBlazorApp\MobileBlazorApp.iOS\MobileBlazorApp.iOS.csproj", "{2472056D-67F5-4034-874E-43EB6E3EE74A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HybridAuthSample", "HybridAuthSample", "{06BC50C0-7882-4E96-8FEA-78B3872AE49D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.MobileBlazorBindings.Authentication", "src\Microsoft.MobileBlazorBindings.Authentication\Microsoft.MobileBlazorBindings.Authentication.csproj", "{EA6DB63E-F9EA-4CFE-9D1F-259D837B9F63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.MobileBlazorBindings.ProtectedStorage", "src\Microsoft.MobileBlazorBindings.ProtectedStorage\Microsoft.MobileBlazorBindings.ProtectedStorage.csproj", "{F2A2AC4F-A043-45CB-AE27-E27D5AEF69B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridAuthApp", "samples\HybridAuthSample\HybridAuthApp\HybridAuthApp.csproj", "{6FA71EAF-AF2C-4A91-AF97-881B98729130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridAuthApp.Android", "samples\HybridAuthSample\HybridAuthApp.Android\HybridAuthApp.Android.csproj", "{D8DDE5FA-05F4-406E-B568-FABE0107BBFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridAuthApp.iOS", "samples\HybridAuthSample\HybridAuthApp.iOS\HybridAuthApp.iOS.csproj", "{9B4B4BE3-9773-4367-B5A7-A972A02B6F66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridAuthApp.macOS", "samples\HybridAuthSample\HybridAuthApp.macOS\HybridAuthApp.macOS.csproj", "{F113708B-8FB0-485E-B196-52EBE3410AC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridAuthApp.Windows", "samples\HybridAuthSample\HybridAuthApp.Windows\HybridAuthApp.Windows.csproj", "{41B356B3-6A2D-46F0-A56F-41B616FC04B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileBlazorBindingsHelloWorld.Windows", "samples\MobileBlazorBindingsHelloWorld\MobileBlazorBindingsHelloWorld.Windows\MobileBlazorBindingsHelloWorld.Windows.csproj", "{61C397A7-836F-44D3-BE56-E52C4EB04103}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthSample", "AuthSample", "{C5E3A3E0-B462-42C1-A67C-20F19506767B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileBlazorBindingsAuthSample", "samples\MobileBlazorBindingsAuthSample\MobileBlazorBindingsAuthSample\MobileBlazorBindingsAuthSample.csproj", "{10D6671E-1F16-4F55-9AA4-24D31B610B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileBlazorBindingsAuthSample.Android", "samples\MobileBlazorBindingsAuthSample\MobileBlazorBindingsAuthSample.Android\MobileBlazorBindingsAuthSample.Android.csproj", "{35180704-B1DC-4399-A001-52D90C26AA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileBlazorBindingsAuthSample.iOS", "samples\MobileBlazorBindingsAuthSample\MobileBlazorBindingsAuthSample.iOS\MobileBlazorBindingsAuthSample.iOS.csproj", "{876DD2A1-FC5F-4F83-8E3E-BB3D37048C0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileBlazorBindingsAuthSample.Windows", "samples\MobileBlazorBindingsAuthSample\MobileBlazorBindingsAuthSample.Windows\MobileBlazorBindingsAuthSample.Windows.csproj", "{4C237E60-6AFD-42E4-9A47-A837F465059E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.MobileBlazorBindings.Authentication.Msal", "src\Microsoft.MobileBlazorBindings.Authentication.Msal\Microsoft.MobileBlazorBindings.Authentication.Msal.csproj", "{FF040F94-F70A-4FFC-BFCB-0D4FA9C8D265}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HybridMsalAuthSample", "HybridMsalAuthSample", "{EDBF7495-7557-457A-96FF-DB68D4B57C2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridMsalAuthApp", "samples\HybridMsalAuthSample\HybridMsalAuthApp\HybridMsalAuthApp.csproj", "{2F8CF741-173E-4DBB-8791-64BE3DAB01CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridMsalAuthApp.Android", "samples\HybridMsalAuthSample\HybridMsalAuthApp.Android\HybridMsalAuthApp.Android.csproj", "{F7CF1249-9AD5-4087-9F62-99D3808A1A79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridMsalAuthApp.iOS", "samples\HybridMsalAuthSample\HybridMsalAuthApp.iOS\HybridMsalAuthApp.iOS.csproj", "{D3B0F2E0-E1A6-4F9F-8B64-5EB147B1B817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridMsalAuthApp.macOS", "samples\HybridMsalAuthSample\HybridMsalAuthApp.macOS\HybridMsalAuthApp.macOS.csproj", "{84EBDBF2-0E83-4D20-BCEA-F00FF716F2F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridMsalAuthApp.Windows", "samples\HybridMsalAuthSample\HybridMsalAuthApp.Windows\HybridMsalAuthApp.Windows.csproj", "{7F72AEB6-7077-4F58-A3EB-BC668E8EEECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
